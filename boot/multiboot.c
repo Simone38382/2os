@@ -272,7 +272,7 @@ static void finish_boot(void) {
 		e = uefi_call_wrapper(ST->BootServices->ExitBootServices, 2, ImageHandleIn, mapKey);
 
 		if (e != EFI_SUCCESS) { 
-			print_("Exit services failed. \n");
+			print_("oops exit failed :( \n");
 			print_hex_(e);
 			while (1) {};
 		}
@@ -321,7 +321,7 @@ void boot(void) {
 			(void **)&loaded_image);
 
 	if (EFI_ERROR(status)) {
-		print_("Could not obtain loaded_image_protocol\n");
+		print_("Could not obtain loaded_image_protocol :(\n");
 		while (1) {};
 	}
 
@@ -340,7 +340,7 @@ void boot(void) {
 			2, efi_simple_filesystem, &root);
 
 	if (EFI_ERROR(status)) {
-		print_("Could not open volume.\n");
+		print_("Could not open volume. :(\n");
 		while (1) {};
 	}
 
@@ -381,7 +381,7 @@ void boot(void) {
 		EFI_STATUS status = 0;
 		status = uefi_call_wrapper(ST->BootServices->AllocatePages, 4, type, memtype, pages, &addr);
 		if (EFI_ERROR(status)) {
-			print_("Could not allocate space to load boot payloads: ");
+			print_("Could not allocate space to load boot payloads :( : ");
 			print_hex_(status);
 			print_(" ");
 			print_hex_(addr);
@@ -395,7 +395,7 @@ void boot(void) {
 			3, file, &bytes, (void *)KERNEL_LOAD_START);
 
 	if (EFI_ERROR(status)) {
-		print_("Error loading kernel.\n");
+		print_("Error loading kernel :(.\n");
 		while (1) {};
 	}
 
