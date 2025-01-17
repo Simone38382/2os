@@ -1,6 +1,6 @@
-# ToaruOS
+# 2OS
 
-ToaruOS is a "complete" operating system for x86-64 PCs and experimental support for ARMv8.
+2OS is a "complete" operating system for x86-64 PCs and experimental support for ARMv8.
 
 While many independent, hobby, and research OSes aim to experiment with new designs, ToaruOS is intended as an educational resource, providing a representative microcosm of functionality found in major desktop operating systems.
 
@@ -13,14 +13,14 @@ There are no external runtime dependencies and all required source code, totalli
 
 ## History
 
-> I have been working on ToaruOS for over a decade now, and my goals have changed over the years.
+> I have been working on 2OS for over a decade now, and my goals have changed over the years.
 >
 > When I first started the project in December 2010, my aim was to "learn by doing" - studying Unix-like systems by making one from scratch.
-> I had been a contributor to Compiz, one of the first widely-used compositing window managers for X11, a few years prior, and somewhat naturally ToaruOS gained a GUI built on similar concepts early on.
+> I had been a contributor to Compiz, one of the first widely-used compositing window managers for X11, a few years prior, and somewhat naturally 2OS gained a GUI built on similar concepts early on.
 >
-> For its original 1.0 release in 2015, ToaruOS was not the "completely from scratch" OS it has since become.
+> For its original 1.0 release in 2015, 2OS was not the "completely from scratch" OS it has since become.
 > Newlib provided the libc, and the GUI was built on Cairo, libpng, and Freetype.
-> In the middle of 2018, I started a new project to replace these third-party components, which was eventually completed and merged to become ToaruOS 1.6.
+> In the middle of 2018, I started a new project to replace these third-party components, which was eventually completed and merged to become 2OS 1.6.
 >
 > Through out the project, ToaruOS has also attracted quite a few beginner OS developers who have tried to use it as a reference.
 > ToaruOS's kernel, however, was a source of personal embarrassment for me, and in April 2021, after a long hiatus, I began work on a new one.
@@ -51,7 +51,7 @@ The following projects are currently in progress:
 - **Rewrite the network stack** for greater throughput, stability, and server support.
 - **Improve SMP performance** with better scheduling and smarter userspace synchronization functions.
 - **Support more hardware** with new device drivers for AHCI, USB, virtio devices, etc.
-- **Bring back ports** from ToaruOS "Legacy", like muPDF and Mesa.
+- **Bring back ports** from 2OS "Legacy", like muPDF and Mesa.
 - **Improve POSIX coverage** especially in regards to signals, synchronization primitives, as well as by providing more common utilities.
 - **Continue to improve the C library** which remains quite incomplete compared to Newlib and is a major source of issues with bringing back old ports.
 - **Replace third-party development tools** to get the OS to a state where it is self-hosting with just the addition of a C compiler.
@@ -61,17 +61,17 @@ The following projects are currently in progress:
 
 ### Building With Docker
 
-General users hoping to build ToaruOS from source are recommended to fork the repository on Github and make use of the Github CI pipeline.
+General users hoping to build 2OS from source are recommended to fork the repository on Github and make use of the Github CI pipeline.
 
 For those looking to build locally on an appropriately configured Linux host with Docker, a build container is available. The ToaruOS repository should be used as a bind mount at `/root/misaka` and `util/build-in-docker.sh` can be run within this container to complete the compilation process:
 
-    git clone https://github.com/klange/toaruos
-    cd toaruos
+    git clone https://github.com/simone38382/2os
+    cd 2os
     git submodule update --init kuroko
     docker pull toaruos/build-tools:1.99.x
     docker run -v `pwd`:/root/misaka -w /root/misaka -e LANG=C.UTF-8 -t toaruos/build-tools:1.99.x util/build-in-docker.sh
 
-After building like this, you can run the various utility targets (`make run`, etc.). Try `make shell` to run a ToaruOS shell using a serial port with QEMU.
+After building like this, you can run the various utility targets (`make run`, etc.). Try `make shell` to run a 2OS shell using a serial port with QEMU.
 
 ### Build Process Internals
 
